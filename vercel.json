@@ -8,11 +8,5 @@
       "source": "/api/:path*/",
       "destination": "https://husan.airi.uz/api/:path*/"
     }
-  ],
-  "builds": [
-    {
-        "src": "package.json",
-        "use": "vercel-sapper"
-    }
   ]
 }
