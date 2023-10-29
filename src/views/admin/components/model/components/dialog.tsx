@@ -24,6 +24,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 interface IModal {
   model: IModel | boolean;
   handleClose: () => void;
+  setLoading?:(value: (((prevState: boolean) => boolean) | boolean)) => void
 }
 
 const VisuallyHiddenInput = styled("input")({
@@ -86,10 +87,10 @@ const ButtonFile = ({ name, register, watch, errors, link, size, publicName }: a
 
 const validationFile = (
   value: string | any[],
-  updateMode?: boolean | undefined
+  updateMode?: boolean | undefined,
 ) => (updateMode ? updateMode : value && Boolean(value.length));
 
-export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
+export const Modal: React.FC<IModal> = ({ model, handleClose, setLoading }) => {
   const updateMode = useMemo(() => typeof model === "object", [model]);
 
   const { createModel } = useModelHook();
@@ -173,6 +174,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
   });
 
   const submitForm = async (data: { [x: string]: any }) => {
+    if(updateMode && (model as IModel).order === 0 && setLoading) setLoading(true)
     const order = models.length
       ? Math.max(...models.map((model) => model.order)) + 1
       : 0;
@@ -191,6 +193,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
     handleClose();
     reset();
     await createModel(formData, updateMode ? (model as IModel).id! : undefined);
+    if(setLoading) setLoading(false)
   };
 
   useEffect(() => {

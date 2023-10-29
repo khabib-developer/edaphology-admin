@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom";
 import {Login} from "@/views/authentication/login";
 import {AdminLayout} from "@/views/admin";
@@ -12,6 +12,11 @@ const Pages = () => {
 
     const {isAdmin} = useAuthHook()
 
+    const location = useMemo(() => {
+        const location = localStorage.getItem("location")
+        return location ? location : "/admin/model"
+    }, [])
+
     return (
         <BrowserRouter>
             <Switch>
@@ -19,7 +24,7 @@ const Pages = () => {
                     user && <>
                        <Route path="/admin" children={ <AdminLayout/> }/>
                        <Route exact path="*">
-                          <Redirect to={ !isAdmin() ? "/admin/database":"/admin/model" }/>
+                          <Redirect to={ !isAdmin() ? "/admin/database":location}/>
                        </Route>
                     </>
                 }

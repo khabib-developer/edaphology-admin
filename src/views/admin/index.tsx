@@ -2,7 +2,7 @@ import AppBar from "@/views/admin/components/appBar";
 import React, {useEffect, useState} from "react";
 import Sidebar from "@/views/admin/components/sidebar";
 import {Box} from "@mui/material";
-import {Redirect, Route} from "react-router-dom";
+import {Redirect, Route, useLocation} from "react-router-dom";
 import Model from "@/views/admin/components/model";
 import {Module} from "@/views/admin/components/module";
 import {Database} from "@/views/admin/components/database";
@@ -15,6 +15,7 @@ import {DatabaseTable} from "@/views/admin/components/database/table";
 export const AdminLayout = () => {
     const [open, setOpen] = useState<boolean>(false)
 
+    const location = useLocation()
 
     const [permission, setPermission] = useState(false)
 
@@ -25,6 +26,10 @@ export const AdminLayout = () => {
             setPermission(await check(true))
         }())
     }, [])
+
+    useEffect(() => {
+        localStorage.setItem('location', location.pathname)
+    }, [location])
 
     if (permission)
         return (

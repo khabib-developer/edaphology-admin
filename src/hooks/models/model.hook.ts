@@ -1,4 +1,4 @@
-import {useCallback} from "react";
+import {useCallback, useState} from "react";
 import useAxios from "@/services";
 import {useModelStore} from "@/store/model.store";
 import {useAppStore} from "@/store/index.store";
@@ -7,6 +7,7 @@ import {useAppStore} from "@/store/index.store";
 export const useModelHook = () => {
 
     const {fetchData} = useAxios()
+    const [updateOrderLoading, setUpdateOrderLoading] = useState(false)
 
     const {setModels, models} = useModelStore()
 
@@ -51,16 +52,15 @@ export const useModelHook = () => {
 
     }, [models])
 
-    const bulkUpdateOrders = useCallback((updatedArray) => {
+    const bulkUpdateOrders = useCallback(async(updatedArray) => {
         setModels(updatedArray)
-        fetchData("/accounts/update-order/", "POST", {
+        await fetchData("/accounts/update-order/", "POST", {
             order: updatedArray.map(item => ({
                 id: item.id,
                 order: item.order
             }))
         }, {}, true, true, false)
-
     }, [models])
 
-    return {getModels, createModel, deleteModel, bulkUpdateOrders}
+    return {getModels, createModel, deleteModel, bulkUpdateOrders, updateOrderLoading}
 }
