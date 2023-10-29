@@ -24,14 +24,16 @@ const Pages = () => {
                     </>
                 }
 
-                {
-                    !user && <>
-                       <Route path="/auth/login" children={ <Login/> }/>
-                       <Route exact path="*">
-                          <Redirect to={ '/auth/login' }/>
-                       </Route>
-                    </>
-                }
+                {/*{*/}
+                {/*    !user && <>*/}
+                {/*       */}
+                {/*    </>*/}
+                {/*}*/}
+
+                <Route path="/auth/login" children={ <Login/> }/>
+                <Route exact path="*">
+                    <Redirect to={ '/auth/login' }/>
+                </Route>
             </Switch>
         </BrowserRouter>
     );
