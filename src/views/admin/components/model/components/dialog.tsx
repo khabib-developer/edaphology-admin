@@ -254,7 +254,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
             <Grid container columnSpacing={3}>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  Model almashtir
+                  Model
                 </Typography>
                 <Box pt={2}>
                   <ButtonFile
@@ -403,13 +403,13 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
             </Grid>
           </Box>
 
-          <Grid container justifyContent="end" p={3}>
-            {updateMode ? (
-              <Button type="submit">Yangilash</Button>
-            ) : (
-              <Button type="submit" variant="outlined" color="success">Yaratish</Button>
-            )}
+          <Grid container justifyContent="end" p={3} gap={3}>
             <Button onClick={handleClose}>Yopish</Button>
+            {updateMode ? (
+              <Button type="submit" variant="contained" color="success">Yangilash</Button>
+            ) : (
+              <Button type="submit" variant="contained" color="success">Yaratish</Button>
+            )}
           </Grid>
         </Box>
       </Box>
