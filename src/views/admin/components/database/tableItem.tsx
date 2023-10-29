@@ -22,7 +22,8 @@ export const TableItem = ({row}) => {
 
     const handleChange = (event, item) => {
         const value = event.target.value
-        const isValid = /^[1-5]$/.test(value);
+        const regex = item === columns[15].id ? /^[1-6]$/ : /^[1-5]$/
+        const isValid = regex.test(value);
         if(isValid)
             setFeatures(prev => ({...prev, [item]: +value}))
     }
@@ -64,7 +65,7 @@ export const TableItem = ({row}) => {
                 <input className="tableInput" onChange={e => handleChange(e, columns[14].id)} value={features[columns[14].id]} max={5} min={1} type="number" />
             </TableCell>
             <TableCell key={ columns[15].id } >
-                <input className="tableInput" onChange={e => handleChange(e, columns[15].id)} value={features[columns[15].id]} max={5} min={1} type="number" />
+                <input className="tableInput" onChange={e => handleChange(e, columns[15].id)} value={features[columns[15].id]} max={6} min={1} type="number" />
             </TableCell>
             <TableCell key={ columns[16].id } >
                 <input className="tableInput" maxLength={1}  type="number" defaultValue={row[columns[16].id ]} max={5} min={1} disabled />
