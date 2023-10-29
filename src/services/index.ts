@@ -35,7 +35,7 @@ const useAxios = () => {
             if(err && error) {
                 if(!err.response) return setError("Something went wrong :(")
                 Object.values(err.response.data).forEach(err => {
-                    setError(err.toString())
+                    setError(typeof err !== "string" ? err.message: err)
                 })
             }
             return false;
