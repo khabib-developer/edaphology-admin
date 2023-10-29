@@ -38,7 +38,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const ButtonFile = ({ name, register, watch, errors, link, size }: any) => {
+const ButtonFile = ({ name, register, watch, errors, link, size, publicName }: any) => {
   const files = watch(name);
 
   const sizeKb =
@@ -62,7 +62,7 @@ const ButtonFile = ({ name, register, watch, errors, link, size }: any) => {
           validationFile(watch(name)) ? <CheckIcon /> : <CloudUploadIcon />
         }
       >
-        {name}
+        {publicName}
         <VisuallyHiddenInput {...register(name)} type="file" />
       </Button>
       {link.trim() !== "" && (
@@ -259,7 +259,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Typography>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Gumus"
+                    name="file1"
+                    publicName={"Gumus"}
                     link={updateMode && model ? (model as IModel).file1 : ""}
                     register={register}
                     size={
@@ -271,7 +272,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Fosfor"
+                    name="file2"
+                    publicName={"fosfor"}
                     link={updateMode && model ? (model as IModel).file2 : ""}
                     register={register}
                     size={
@@ -283,7 +285,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Kaliy"
+                    name="file3"
+                    publicName={"kaliy"}
                     link={updateMode && model ? (model as IModel).file3 : ""}
                     register={register}
                     size={
@@ -295,7 +298,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Mexanika"
+                    name="file4"
+                    publicName={"mexanika"}
                     link={updateMode && model ? (model as IModel).file4 : ""}
                     register={register}
                     size={
@@ -307,7 +311,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Tuzlanish"
+                    name="file5"
+                    publicName={"tuzlanish"}
                     link={updateMode && model ? (model as IModel).file5 : ""}
                     register={register}
                     size={
@@ -322,7 +327,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 <Typography variant="body2">Preprocessing model</Typography>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Gumus normalization"
+                    name="file1norm"
+                    publicName={"gumus normalization"}
                     link={
                       updateMode && model ? (model as IModel).file1norm : ""
                     }
@@ -336,7 +342,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="Fosfor normalization"
+                    name="file2norm"
+                    publicName={"fosfor normalization"}
                     link={
                       updateMode && model ? (model as IModel).file2norm : ""
                     }
@@ -350,7 +357,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="kaliy normalization"
+                    name="file3norm"
+                    publicName={"kaliy normalization"}
                     link={
                       updateMode && model ? (model as IModel).file3norm : ""
                     }
@@ -364,7 +372,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="mexanika norm..."
+                    name="file4norm"
+                    publicName={"mexanika norm..."}
                     link={
                       updateMode && model ? (model as IModel).file4norm : ""
                     }
@@ -378,7 +387,8 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="tuzlanish norm..."
+                    name="file5norm"
+                    publicName={"tuzlanish norm..."}
                     link={
                       updateMode && model ? (model as IModel).file5norm : ""
                     }
