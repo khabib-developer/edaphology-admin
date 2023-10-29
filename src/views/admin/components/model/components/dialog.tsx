@@ -259,7 +259,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Typography>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file1"
+                    name="Gumus"
                     link={updateMode && model ? (model as IModel).file1 : ""}
                     register={register}
                     size={
@@ -271,7 +271,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file2"
+                    name="Fosfor"
                     link={updateMode && model ? (model as IModel).file2 : ""}
                     register={register}
                     size={
@@ -283,7 +283,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file3"
+                    name="Kaliy"
                     link={updateMode && model ? (model as IModel).file3 : ""}
                     register={register}
                     size={
@@ -295,7 +295,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file4"
+                    name="Mexanika"
                     link={updateMode && model ? (model as IModel).file4 : ""}
                     register={register}
                     size={
@@ -307,7 +307,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file5"
+                    name="Tuzlanish"
                     link={updateMode && model ? (model as IModel).file5 : ""}
                     register={register}
                     size={
@@ -322,7 +322,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 <Typography variant="body2">Preprocessing model</Typography>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file1norm"
+                    name="Gumus normalization"
                     link={
                       updateMode && model ? (model as IModel).file1norm : ""
                     }
@@ -336,7 +336,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file2norm"
+                    name="Fosfor normalization"
                     link={
                       updateMode && model ? (model as IModel).file2norm : ""
                     }
@@ -350,7 +350,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file3norm"
+                    name="kaliy normalization"
                     link={
                       updateMode && model ? (model as IModel).file3norm : ""
                     }
@@ -364,7 +364,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file4norm"
+                    name="mexanika norm..."
                     link={
                       updateMode && model ? (model as IModel).file4norm : ""
                     }
@@ -378,7 +378,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
                 </Box>
                 <Box pt={2}>
                   <ButtonFile
-                    name="file5norm"
+                    name="tuzlanish norm..."
                     link={
                       updateMode && model ? (model as IModel).file5norm : ""
                     }
