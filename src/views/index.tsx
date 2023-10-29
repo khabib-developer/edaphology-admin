@@ -27,12 +27,11 @@ const Pages = () => {
                 {
                     !user && <>
                        <Route path="/auth/login" children={ <Login/> }/>
+                       <Route exact path="*">
+                          <Redirect to={ '/auth/login' }/>
+                       </Route>
                     </>
                 }
-
-                <Route exact path="*">
-                    <div>404</div>
-                </Route>
             </Switch>
         </BrowserRouter>
     );
