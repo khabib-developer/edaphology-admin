@@ -6,7 +6,7 @@ import {useDatabaseHook} from "@/hooks/database/database.hook";
 import {useModelStore} from "@/store/model.store";
 
 
-export const TableItem = ({row}) => {
+export const TableItem = ({row, index}) => {
 
     const {editData} = useDatabaseHook()
 
@@ -44,9 +44,21 @@ export const TableItem = ({row}) => {
                 const value = row[column.id];
                 if (column.input)
                     return
+                if(column.id === 'id') {
+                    return(<TableCell key={ column.id } align={ column.align }>
+                        { index }
+                    </TableCell>)
+                } else if (column.id === 'model') {
+                    return (
+                        <TableCell key={ column.id } align={ column.align } sx={{background:"#a7eda7"}}>
+                            { column.id === "model"?<Typography sx={{fontStyle:"italic"}}>{ model }</Typography>:value }
+                        </TableCell>
+                    );
+                }
+
                 return (
                     <TableCell key={ column.id } align={ column.align }>
-                        { column.id === "model"?<Typography sx={{fontStyle:"italic"}}>{ model }</Typography>:value }
+                        { value }
                     </TableCell>
                 );
             }) }
@@ -68,7 +80,7 @@ export const TableItem = ({row}) => {
                 <input className="tableInput" onChange={e => handleChange(e, columns[15].id)} value={features[columns[15].id]} max={6} min={1} type="number" />
             </TableCell>
             <TableCell key={ columns[16].id } >
-                <input className="tableInput" maxLength={1}  type="number" defaultValue={row[columns[16].id ]} max={5} min={1} disabled />
+                {row[columns[16].id ]}
             </TableCell>
 
             <TableCell key={ 'button' } >

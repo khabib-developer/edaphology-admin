@@ -29,8 +29,14 @@ export const useAuthHook = () => {
         const user = await fetchData("/accounts/auth/", "GET", null, {}, false, true, false)
         if(user) {
             setUser(user)
-            if( isAdmin())
-                await Promise.all([await getPowerUsers(), await getModels(), await getModules()])
+            if( isAdmin()) {
+                try {
+                    await Promise.all([await getPowerUsers(), await getModels(), await getModules()])
+                } catch (error) {
+                    console.log(error)
+                    logout()
+                }
+            }
         }
 
         if(!admin && user) history.push('/admin/model')

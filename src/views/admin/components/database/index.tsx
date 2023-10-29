@@ -46,11 +46,7 @@ export const Database = () => {
                     ))
                 }
 
-
             </Grid>
-
-
-
         </List>
     )
 }

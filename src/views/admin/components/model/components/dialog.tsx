@@ -243,7 +243,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
             pb={0}
             sx={{ display: "flex", alignItems: "end", flexDirection: "column" }}
           >
-            <Typography>Machine/Deep learning</Typography>
+            <Typography>Machine Learning/Deep Learning</Typography>
             <Switch
               disabled={updateMode}
               checked={updateMode ? (model as IModel).is_dl : checked}
@@ -254,8 +254,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
             <Grid container columnSpacing={3}>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  Model
-                  {updateMode && model ? (model as IModel).name : ""}
+                  Model almashtir
                 </Typography>
                 <Box pt={2}>
                   <ButtonFile
@@ -408,7 +407,7 @@ export const Modal: React.FC<IModal> = ({ model, handleClose }) => {
             {updateMode ? (
               <Button type="submit">Yangilash</Button>
             ) : (
-              <Button type="submit">Yaratish</Button>
+              <Button type="submit" variant="outlined" color="success">Yaratish</Button>
             )}
             <Button onClick={handleClose}>Yopish</Button>
           </Grid>

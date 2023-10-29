@@ -16,7 +16,7 @@ export const ModuleItem = ({module}: {module: IModule}) => {
     return (
         <Box sx={{display:"flex", alignItems:"center", width:"33%", justifyContent:"center"}}>
             <Box sx={{display:"flex", width:"50%", justifyContent:"start", alignItems:"center"}}>
-                <Typography>{module.name}</Typography>
+                <Typography sx={{textTransform:"Uppercase"}}>{module.name}</Typography>
                 <Switch
                     checked={checked}
                     onChange={handleChange}
