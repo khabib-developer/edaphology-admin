@@ -41,8 +41,6 @@ export const useAuthHook = () => {
 
         const location = localStorage.getItem("location")
 
-        console.log(location, !admin && user)
-
         if(!admin && user) history.push(location?location:'/admin/model')
         if(admin && !user) history.push('/auth/login')
 

@@ -54,12 +54,12 @@ export const useModelHook = () => {
 
     const bulkUpdateOrders = useCallback(async(updatedArray) => {
         setModels(updatedArray)
-        await fetchData("/accounts/update-order/", "POST", {
+        return await fetchData("/accounts/update-order/", "POST", {
             order: updatedArray.map(item => ({
                 id: item.id,
                 order: item.order
             }))
-        }, {}, true, true, false)
+        }, {}, true, true, true)
     }, [models])
 
     return {getModels, createModel, deleteModel, bulkUpdateOrders, updateOrderLoading}

@@ -31,6 +31,7 @@ export const DragSortList = ({children, data, setData}) => {
     const dropHandler = (e, card) => {
         e.preventDefault()
         setActive(false)
+
         const reorderedNewCard = {...currentCard, order: card.order}
         setData(
             [

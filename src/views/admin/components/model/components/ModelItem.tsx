@@ -24,6 +24,8 @@ interface IComponent {
     setActive: any,
     loading: boolean,
     setLoading: (value: (((prevState: boolean) => boolean) | boolean)) => void
+    error: boolean,
+    activeModel: IModel
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,7 +33,9 @@ export const ModelItem: React.FC<IComponent> = ({
       model,
       setActive,
       loading,
-      setLoading
+      setLoading,
+        error,
+    activeModel
   }) => {
     const handleClick = () => {
         setActive(true);
@@ -60,7 +64,11 @@ export const ModelItem: React.FC<IComponent> = ({
     return (
         <Paper elevation={ 3 }>
             <Box sx={ {
-                background: model.order === 0 ? loading ? "#ccc" : "#caf1ca" : "",
+                background:
+                    model.order === 0 ?
+                    error ? "red" : loading ?
+                        "#ccc" : "#caf1ca" :
+                        model.id === activeModel.id ? "#caf1ca" : "",
                 p: 2,
                 transition: "all 0.4s ease"
             } }>
