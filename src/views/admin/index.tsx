@@ -40,7 +40,6 @@ export const AdminLayout = () => {
                     {
 
                         <>
-
                            <Route path={ '/admin/model' }>
                               <Model />
                            </Route>
@@ -53,7 +52,7 @@ export const AdminLayout = () => {
                         </>
                     }
                     {
-                        isPower() || isAdmin &&
+                        (isPower() || isAdmin )&&
                         <>
                            <Route path={ '/admin/database' }>
                               <Database/>
