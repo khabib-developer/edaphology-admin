@@ -59,7 +59,7 @@ export const useModelHook = () => {
                 id: item.id,
                 order: item.order
             }))
-        }, {}, true, true, true)
+        }, {}, false, true, true)
     }, [models])
 
     return {getModels, createModel, deleteModel, bulkUpdateOrders, updateOrderLoading}

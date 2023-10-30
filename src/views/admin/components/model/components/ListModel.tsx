@@ -5,12 +5,14 @@ import {useModelStore} from "@/store/model.store";
 import {ModelItem} from "@/views/admin/components/model/components/ModelItem";
 import {useModelHook} from "@/hooks/models/model.hook";
 import {IModel} from "@/types";
+import {useAppStore} from "@/store/index.store";
 
 const ListModel = () => {
     const {models} = useModelStore()
+    const {setError} = useAppStore()
     const {bulkUpdateOrders} = useModelHook()
     const [changingActiveModel, setChangingActiveModel] = useState(false)
-    const [error, setError] = useState(false)
+    const [error, setCustomError] = useState(false)
     const [activeModel, setActiveModel] = useState<IModel | null>(null)
 
     const setData = async (updatedArray: IModel[]) => {
@@ -19,8 +21,9 @@ const ListModel = () => {
         if(bool2 || bool1) setChangingActiveModel(true)
         const result = await bulkUpdateOrders(updatedArray)
         const err = !Boolean(result.detail === 'success')
-        setError(err)
+        setCustomError(err)
         if(!err) setActiveModel(updatedArray.find(item => item.order === 0))
+        else setError("Error activating model")
         setChangingActiveModel(false)
     }
 
