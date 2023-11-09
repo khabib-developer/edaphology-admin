@@ -10,13 +10,11 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import {Link, useParams} from "react-router-dom";
 import {Box, IconButton, TextField, Typography} from "@mui/material";
-import DownloadIcon from '@mui/icons-material/Download';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {useDatabaseHook} from "@/hooks/database/database.hook";
 import {TableItem} from "@/views/admin/components/database/tableItem";
 import {massiveNames} from "@/views/admin/components/database/index";
 import SearchIcon from '@mui/icons-material/Search';
-import {useExcel} from "@/hooks/database/excel.hook";
 interface Column {
     id: string;
     label: string;
@@ -53,9 +51,7 @@ export const DatabaseTable = () => {
 
     const [search, setSearch] = useState('')
 
-    const { exportToExcel } = useExcel()
-
-    const {data, getData} = useDatabaseHook()
+    const {data, getData, editData} = useDatabaseHook()
 
     const [rows, setRows] = useState([])
 
@@ -88,9 +84,7 @@ export const DatabaseTable = () => {
         }
     }, [search])
 
-    const handleDownload = () => {
-        exportToExcel(data)
-    }
+
 
     return (
         <Box>
@@ -98,7 +92,6 @@ export const DatabaseTable = () => {
                 <Box sx={{display:"flex", gap:2}}>
                     <Link to="/admin/database"><ArrowBackIosIcon/></Link>
                     <Typography>{ massiveNames[path] } massivi</Typography>
-                    <DownloadIcon onClick={handleDownload} sx={{cursor:"pointer"}} />
                 </Box>
                 <Box>
                     <TextField value={search} onChange={e => setSearch(e.target.value)} variant="standard" placeholder={"qidirish"} />

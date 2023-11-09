@@ -1,4 +1,4 @@
-import {Grid, List, ListItem, ListItemButton, ListItemText} from "@mui/material";
+import {Button, Grid, List, ListItem, ListItemButton, ListItemText} from "@mui/material";
 import {useHistory} from "react-router-dom";
 
 export const massiveNames = [
@@ -32,6 +32,11 @@ export const Database = () => {
     return (
 
         <List>
+            <Grid container>
+                <Button variant="outlined" color="success" sx={{mx:1, mb:3}}>
+                    Hamma bazani yuklash
+                </Button>
+            </Grid>
             <Grid container>
                 {
                     massiveNames.map((name, index) => (
