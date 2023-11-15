@@ -20,6 +20,8 @@ export interface IAppStore {
   setInfo: (error: null | string) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  databaseUrl: null | string;
+  setDatabaseUrl: (string) => void;
 }
 
 export interface IModelStore {

@@ -1,5 +1,6 @@
 import {Button, Grid, List, ListItem, ListItemButton, ListItemText} from "@mui/material";
 import {useHistory} from "react-router-dom";
+import {useAppStore} from "@/store/index.store";
 
 export const massiveNames = [
     "Mirzacho'l",
@@ -29,12 +30,14 @@ export const massiveNames = [
 
 export const Database = () => {
     const history = useHistory();
-    return (
 
+    const { databaseUrl } = useAppStore()
+
+    return (
         <List>
             <Grid container>
                 <Button variant="outlined" color="success" sx={{mx:1, mb:3}}>
-                    Hamma bazani yuklash
+                    <a target="_blank" href={`${import.meta.env.VITE_BASE_URL}/${databaseUrl}`}>Hamma bazani yuklash</a>
                 </Button>
             </Grid>
             <Grid container>

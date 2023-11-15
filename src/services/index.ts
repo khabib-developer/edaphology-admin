@@ -1,7 +1,9 @@
 import axios from "axios";
 import {useAppStore} from "@/store/index.store";
 
-const BASE_URL = "https://husan.airi.uz/api"
+export const target = import.meta.env.VITE_BASE_URL
+
+const BASE_URL = `${target}/api`
 
 axios.defaults.baseURL = BASE_URL;
 

@@ -1,10 +1,13 @@
 import useAxios from "@/services";
 import {useCallback, useState} from "react";
 import {massiveNames} from "@/views/admin/components/database";
+import {useAppStore} from "@/store/index.store";
 
 
 export const useDatabaseHook = () => {
     const {fetchData} = useAxios()
+
+    const {setDatabaseUrl} = useAppStore()
 
     const [data, setData] = useState([])
 
@@ -21,5 +24,10 @@ export const useDatabaseHook = () => {
         if(result) setData(prev => [...prev.filter(instance => instance.id !== item.id), item])
     }, [data])
 
-    return {data, getData, editData}
+    const getDatabaseUrl = useCallback(async () => {
+        const result: unknown = await fetchData(`/accounts/export/`)
+        if(result) setDatabaseUrl(result.url)
+    }, [])
+
+    return {data, getData, editData, getDatabaseUrl}
 }

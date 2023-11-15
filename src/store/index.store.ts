@@ -11,4 +11,6 @@ export const useAppStore = create<IAppStore>((set) => ({
     setInfo: (info) => set({info}),
     loading: false,
     setLoading: (loading) => set({loading}),
+    databaseUrl: null,
+    setDatabaseUrl: (databaseUrl) => set({databaseUrl}),
 }))

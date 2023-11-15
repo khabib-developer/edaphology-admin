@@ -6,6 +6,7 @@ import {IUser} from "@/types";
 import {useModelHook} from "@/hooks/models/model.hook";
 import {usePowerUserHook} from "@/hooks/poweruser/poweruser.hook";
 import {useModuleHook} from "@/hooks/module/module.hook";
+import {useDatabaseHook} from "@/hooks/database/database.hook";
 
 
 export const useAuthHook = () => {
@@ -15,6 +16,7 @@ export const useAuthHook = () => {
     const {getModels} = useModelHook()
     const {getPowerUsers} = usePowerUserHook()
     const {getModules} = useModuleHook()
+    const {getDatabaseUrl} = useDatabaseHook()
     const history = useHistory()
 
     const login = useCallback(async (data: unknown) => {
@@ -31,7 +33,7 @@ export const useAuthHook = () => {
             setUser(user)
             if( isAdmin()) {
                 try {
-                    await Promise.all([await getPowerUsers(), await getModels(), await getModules()])
+                    await Promise.all([await getPowerUsers(), await getModels(), await getModules(), await getDatabaseUrl()])
                 } catch (error) {
                     console.log(error)
                     logout()
